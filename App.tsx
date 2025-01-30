@@ -1,118 +1,92 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React, { useState } from 'react';
+import { View, Text, Button, StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import './i18n';
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+const App = () => {
+  const { t, i18n } = useTranslation();
+  const [clicked, setClicked] = useState(false);
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+  const handleClick = () => setClicked(!clicked);
+  const changeLanguage = (lang: string) => i18n.changeLanguage(lang);
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style={styles.container}>
+      {/* Global Title */}
+      <Text style={styles.title}>{t('welcome')}</Text>
+
+      {/* Language Change Buttons */}
+      <View style={styles.languageButtons}>
+        <Button title="🇷🇺 Русский" onPress={() => changeLanguage('ru')} />
+        <Button title="🇺🇸 English" onPress={() => changeLanguage('en')} />
+        <Button title="🇯🇵 Japanese" onPress={() => changeLanguage('ja')} />
+
+      </View>
+
+      {/* Button to toggle text */}
+      <Button 
+        style={styles.buttonToggle}
+        title={clicked ? t('buttonClicked') : t('buttonText')} 
+        onPress={handleClick}
+      />
+
+      {/* Cards Section */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>{t('cards.sports')}</Text>
+        <Text style={styles.cardDesc}>{t('cards.sportsDesc')}</Text>
+      </View>
+
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>{t('cards.stars')}</Text>
+        <Text style={styles.cardDesc}>{t('cards.starsDesc')}</Text>
+      </View>
+
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>{t('cards.code')}</Text>
+        <Text style={styles.cardDesc}>{t('cards.codeDesc')}</Text>
+      </View>
     </View>
   );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
+};
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#282c34',
+    padding: 20,
   },
-  sectionTitle: {
+  title: {
     fontSize: 24,
-    fontWeight: '600',
+    color: '#61dafb',
+    marginBottom: 20,
   },
-  sectionDescription: {
-    marginTop: 8,
+  languageButtons: {
+    flexDirection: 'row',
+    marginBottom: 20,
+  },
+  card: {
+    backgroundColor: '#3a3f4b',
+    borderRadius: 10,
+    padding: 10,
+    marginBottom: 20,
+    width: '80%',
+    alignItems: 'center',
+  },
+  cardTitle: {
     fontSize: 18,
-    fontWeight: '400',
+    color: '#fff',
+    marginVertical: 5,
   },
-  highlight: {
-    fontWeight: '700',
+  cardDesc: {
+    fontSize: 14,
+    color: '#aaa',
+    textAlign: 'center',
   },
+  buttonToggle: {
+    marginBottom: 20
+  }
 });
 
 export default App;

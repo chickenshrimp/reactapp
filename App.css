@@ -1,0 +1,76 @@
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  font-family: 'Press Start 2P', cursive;
+  margin: 0;
+  padding: 0;
+  background-color: #282c34;
+  color: #61dafb;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  margin-top: 1rem;
+  color: #61dafb;
+  text-shadow: 2px 2px #ff6f61;
+}
+
+.button {
+  background-color: #61dafb;
+  color: #282c34;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.9rem;
+  font-family: 'Press Start 2P', cursive;
+  cursor: pointer;
+  margin: 1rem 0;
+  transition: background-color 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+.button:hover {
+  background-color: #ff6f61;
+  color: #fff;
+}
+
+.card {
+  background-color: #3a3f4b;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem 0;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.card p {
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}

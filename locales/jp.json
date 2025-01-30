@@ -1,0 +1,14 @@
+{
+    "welcome": "ようこそ！",
+    "buttonText": "クリックしてね",
+    "buttonClicked": "^.^",
+    "cards": {
+      "sports": "スポーツベッティング",
+      "sportsDesc": "ここに広告が表示されます",
+      "stars": "トップスター",
+      "starsDesc": "React開発のベストプラクティスを学ぼう。",
+      "code": "ちょっとしたコード",
+      "codeDesc": "バグじゃなくて、機能です"
+    }
+  }
+  

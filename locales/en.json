@@ -1,0 +1,14 @@
+{
+    "welcome": "Welcome!",
+    "buttonText": "Click me",
+    "buttonClicked": "^.^",
+    "cards": {
+      "sports": "Sports Betting",
+      "sportsDesc": "There should be an ad here",
+      "stars": "Top Stars",
+      "starsDesc": "Learn the best practices for React development.",
+      "code": "Some Code",
+      "codeDesc": "It's not a bug, it's a feature"
+    }
+  }
+  
